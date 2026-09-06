@@ -1,18 +1,61 @@
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { NavBar } from '@/ui/components/NavBar';
 
 type ProjectPageTemplateProps = {
   projectName: string;
   projectType: string;
   techStack: string[];
+  githubUrl?: string | string[];
 };
 
 export function ProjectPageTemplate({
   projectName,
   projectType,
   techStack,
+  githubUrl,
 }: ProjectPageTemplateProps) {
+  const pageRef = useRef<HTMLDivElement | null>(null);
+  const githubLinks = Array.isArray(githubUrl) ? githubUrl : githubUrl ? [githubUrl] : [];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>('.project-page-reveal');
+
+      if (!items.length) {
+        return;
+      }
+
+      gsap.fromTo(
+        items,
+        { autoAlpha: 0, y: 28 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+        },
+      );
+
+      gsap.fromTo(
+        '.project-page-card',
+        { autoAlpha: 0, y: 24 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.9,
+          delay: 0.15,
+          ease: 'power3.out',
+        },
+      );
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-background text-foreground">
+    <div ref={pageRef} className="relative min-h-screen overflow-x-clip bg-background text-foreground">
       <NavBar navItems={[]} homeHref="/" />
 
       <section className="relative isolate overflow-hidden px-6 pb-20 pt-28 md:px-12 md:pb-24 md:pt-32">
@@ -31,16 +74,16 @@ export function ProjectPageTemplate({
         <div className="pointer-events-none absolute -left-20 top-16 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(181,209,116,0.23)_0%,rgba(181,209,116,0)_70%)] blur-sm" />
 
         <div className="relative mx-auto max-w-5xl">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-[1px] border border-border bg-card/60 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+          <p className="project-page-reveal mb-5 inline-flex items-center gap-2 rounded-[1px] border border-border bg-card/60 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             {projectType}
           </p>
 
-          <h1 className="mb-8 max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
+          <h1 className="project-page-reveal mb-8 max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
             {projectName}
           </h1>
 
-          <div className="mb-12 flex flex-wrap gap-2">
+          <div className="project-page-reveal mb-12 flex flex-wrap gap-2">
             {techStack.map((tech) => (
               <span
                 key={tech}
@@ -50,11 +93,27 @@ export function ProjectPageTemplate({
               </span>
             ))}
           </div>
+
+          {githubLinks.length > 0 && (
+            <div className="project-page-reveal mb-8 flex flex-wrap justify-start gap-3">
+              {githubLinks.map((link, index) => (
+                <a
+                  key={`${link}-${index}`}
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-[1px] border border-accent bg-accent px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-background transition hover:opacity-90"
+                >
+                  {githubLinks.length > 1 ? `View GitHub Repo ${index + 1}` : 'View GitHub Repo'}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       <section className="border-t border-border px-6 py-12 md:px-12 md:py-16">
-        <div className="mx-auto grid max-w-5xl gap-8 border border-border bg-card/35 p-7 md:grid-cols-[1.1fr_0.9fr] md:p-10">
+        <div className="project-page-card mx-auto grid max-w-5xl gap-8 border border-border bg-card/35 p-7 md:grid-cols-[1.1fr_0.9fr] md:p-10">
           <div>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
               Blog Under Construction

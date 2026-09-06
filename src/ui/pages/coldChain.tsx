@@ -6,6 +6,7 @@ export function ColdChain() {
 			projectName="ColdChain"
 			projectType="Software + IoT"
 			techStack={['TypeScript', 'React', 'Python', 'Raspberry Pi', 'AWS']}
+			githubUrl="https://github.com/brauni18/cold-chain.git"
 		/>
 	);
 }

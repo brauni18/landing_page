@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
     type: 'Software',
     title: 'Irrigate',
     description:
-      'Built a responsive web application to calculate, schedule, control, and automate large irrigation systems.',
+      'responsive web application to calculate, schedule, control, and automate large irrigation systems.',
     tags: ['JavaScript', 'Node.js', 'MongoDB', 'Cloudflare R2', 'Vercel', 'Render', 'Landscape Architecture'],
     href: 'irrigate',
   },
@@ -22,9 +22,10 @@ export const PROJECTS: Project[] = [
     type: 'Software',
     title: 'ColdChain',
     description:
-      'Engineered a real-time IoT monitoring system for industrial refrigeration using DS18B20 sensors and Raspberry Pi microcontrollers.',
+      'real-time IoT monitoring system for industrial refrigeration using DS18B20 sensors and Raspberry Pi microcontrollers.',
     tags: ['TypeScript', 'React', 'Python', 'Raspberry Pi', 'AWS services'],
     href: 'coldchain',
+    
   },
   {
     subject: 'coding',

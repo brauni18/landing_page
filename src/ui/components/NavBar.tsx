@@ -1,7 +1,8 @@
 import { useEffect, useState, type MouseEvent } from 'react';
-import { Download, House } from 'lucide-react';
+import { Download, House, Moon, Sun } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { useTheme } from '@/hooks/useTheme';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -31,6 +32,7 @@ export function NavBar({
   onCtaClick,
   homeHref = '#hero',
 }: NavBarProps) {
+  const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState<string>(homeHref.startsWith('#') ? homeHref : '');
 
   useEffect(() => {
@@ -116,7 +118,7 @@ export function NavBar({
   };
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-border bg-[rgba(10,10,8,0.85)] px-6 py-4 backdrop-blur-lg md:px-12">
+    <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-border bg-[color:var(--nav-surface)] px-6 py-4 backdrop-blur-lg md:px-12">
       <a
         href={homeHref}
         onClick={homeHref.startsWith('#') ? (event) => onNavigate(event, homeHref) : undefined}
@@ -141,19 +143,33 @@ export function NavBar({
         ))}
       </ul>
 
-      {ctaLabel && ctaHref ? (
-        <a
-          href={ctaHref}
-          onClick={onCtaClick ?? onDownloadCv}
-          download={ctaDownload}
-          className="inline-flex items-center gap-2 rounded-[2px] bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-background transition-opacity hover:opacity-85"
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-[2px] border border-border bg-card/80 text-muted transition-[color,border-color,background-color,transform] hover:-translate-y-0.5 hover:border-accent hover:bg-card hover:text-foreground"
         >
-          <Download size={14} strokeWidth={2} aria-hidden="true" />
-          <span>{ctaLabel}</span>
-        </a>
-      ) : (
-        <span className="hidden h-8 w-25.25 md:block" aria-hidden="true" />
-      )}
+          {theme === 'dark' ? (
+            <Sun size={15} strokeWidth={1.8} aria-hidden="true" />
+          ) : (
+            <Moon size={15} strokeWidth={1.8} aria-hidden="true" />
+          )}
+        </button>
+
+        {ctaLabel && ctaHref ? (
+          <a
+            href={ctaHref}
+            onClick={onCtaClick ?? onDownloadCv}
+            download={ctaDownload}
+            className="inline-flex items-center gap-2 rounded-[2px] bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-background transition-opacity hover:opacity-85"
+          >
+            <Download size={14} strokeWidth={2} aria-hidden="true" />
+            <span>{ctaLabel}</span>
+          </a>
+        ) : null}
+      </div>
     </nav>
   );
 }

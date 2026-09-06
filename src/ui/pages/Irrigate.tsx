@@ -1,6 +1,7 @@
 import { NavBar } from '@/ui/components/NavBar';
 
 const LIVE_URL = 'https://irrigate-ochre.vercel.app/login';
+const GITHUB_URL = 'https://github.com/brauni18/Irrigate';
 const TECH_STACK = ['JavaScript', 'Node.js', 'MongoDB', 'React', 'Automation'];
 const PRODUCT_PILLARS = ['Plan irrigation logic', 'Automate schedules', 'Manage system access'];
 
@@ -72,6 +73,14 @@ export function Irrigate() {
 								className="inline-flex items-center justify-center rounded-[1px] border border-accent bg-accent px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-background transition hover:opacity-90"
 							>
 								Open Live App
+							</a>
+							<a
+								href={GITHUB_URL}
+								target="_blank"
+								rel="noreferrer"
+								className="inline-flex items-center justify-center rounded-[1px] border border-border bg-card px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground transition hover:opacity-90"
+							>
+								View GitHub Repo
 							</a>
 						</div>
 
