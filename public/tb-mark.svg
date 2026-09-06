@@ -1,0 +1,5 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Tal Braun monogram" role="img">
+  <rect width="64" height="64" rx="14" fill="#10100d"/>
+  <path d="M18 18H28V46H18V18ZM28 32H45V46H28V32ZM18 18H46V28H18V18Z" fill="#b5d174"/>
+  <path d="M28 18H46V28H28V18ZM28 32H46V46H28V32Z" fill="#e8e6df" opacity="0.1"/>
+</svg>
