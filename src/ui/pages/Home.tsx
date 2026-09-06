@@ -253,7 +253,7 @@ export function Home() {
         return;
       }
       nav.style.borderBottomColor =
-        window.scrollY > 40 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)';
+        window.scrollY > 40 ? 'var(--nav-border-strong)' : 'var(--nav-border-soft)';
     };
 
     window.addEventListener('scroll', onScroll);
@@ -426,7 +426,7 @@ export function Home() {
         data-reveal-section
         className="border-t border-border bg-card px-6 py-24 md:px-12"
       >
-        <div className="fade-in-block mx-auto max-w-5xl">
+        <div className="fade-in-block">
           <div className="mb-8 flex items-baseline gap-6">
             <span className="font-mono text-[11px] tracking-widest text-accent">
               04
