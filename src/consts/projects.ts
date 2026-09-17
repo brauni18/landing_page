@@ -15,7 +15,7 @@ export const PROJECTS: Project[] = [
     description:
       'responsive web application to calculate, schedule, control, and automate large irrigation systems.',
     tags: ['JavaScript', 'Node.js', 'MongoDB', 'Cloudflare R2', 'Vercel', 'Render', 'Landscape Architecture'],
-    href: 'irrigate',
+    href: 'https://irrigate-ochre.vercel.app/login',
   },
   {
     subject: 'coding',
@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     description:
       'real-time IoT monitoring system for industrial refrigeration using DS18B20 sensors and Raspberry Pi microcontrollers.',
     tags: ['TypeScript', 'React', 'Python', 'Raspberry Pi', 'AWS services'],
-    href: 'coldchain',
+    href: 'https://github.com/brauni18/cold-chain.git',
     
   },
   {
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     description:
       'Developed a web platform during a hackathon to manage sports travel logistics, including scheduling, accommodation, and transportation for teams and athletes.',
     tags: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
-    href: 't4s',
+    href: 'https://github.com/brauni18/Traveling-4-Sports.git',
   },
   {
     subject: 'coding',
@@ -43,6 +43,6 @@ export const PROJECTS: Project[] = [
     description:
       'Developed a self-hosted, full-stack cloud storage application prioritizing data sovereignty and secure file management. Built a responsive React/TypeScript front-end integrated with a Node.js backend.',
     tags: ['TypeScript', 'React', 'Node.js', 'MongoDB', 'Cloudflare Tunnel'],
-    href: 'homecloud',
+    href: 'https://github.com/Colman-Dev-Club-HomeDrive/HomeDriveFrontend.git',
   },
 ];
