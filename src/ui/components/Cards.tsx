@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Link } from 'react-router';
 import type { Project } from '@/consts/projects';
 import { readHoverMotionTokens } from '@/utils/motion';
 
@@ -173,9 +172,11 @@ export function Cards({ projects }: CardsProps) {
 
         <div className="grid gap-px border-t border-border md:grid-cols-2">
           {visibleProjects.map((project, index) => (
-          <Link
+          <a
             key={project.title}
-            to={`/${project.href}`}
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
             className="project-card group relative block overflow-hidden bg-card p-8 text-inherit no-underline transition-colors hover:bg-secondary"
           >
             <span className="project-card-glow pointer-events-none absolute inset-0 opacity-0" />
@@ -216,11 +217,11 @@ export function Cards({ projects }: CardsProps) {
             </div>
 
             <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent/80 transition-colors group-hover:text-accent">
-              Explore Case Study
+              Open Project
             </p>
 
             <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform group-hover:scale-x-100" />
-          </Link>
+          </a>
           ))}
         </div>
 
