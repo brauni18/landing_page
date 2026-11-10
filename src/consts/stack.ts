@@ -41,7 +41,7 @@ export const STACK_GROUPS: StackGroup[] = [
     stacks: [
       { name: 'System Design' },
       { name: 'AI-Assisted Development' },
-      { name: 'MCPs' },
+      { name: 'RAG' },
     ],
   },
 ];
